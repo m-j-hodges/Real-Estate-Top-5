@@ -4,7 +4,7 @@
 
 This app is used to research a certain market in the US for investment potential. We are using a 3rd party API called MashAdvisor to search for real estate information. The information about a certain city of state can be gathered and analyzed. The purpose of the app is to evaluate all the properties for sale in the state or city and determine if they are a great investment based on ther initial cost, return on investment, and occupancy rates for the state or city. This information is then used by our algorithm to give the investment a grade (A, B, C, D, or F). Information about the top 5 properties is display for the user once they have logged into their account. The properties display will be the best investments based on our algorithm. There will be a link to a page which displays further information about the property.
 
-(insert .gif here showing what the app looks like when used.)
+<!-- insert .gif here showing what the app looks like when used.>
 
 ## Usage
 
@@ -43,3 +43,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Badges
+
+
+![javascript_badge](https://img.shields.io/static/v1?label=Javascript&message=100%&color=blue)
+
+
+## How to contribute
+
+<!-- to be completed later.>
