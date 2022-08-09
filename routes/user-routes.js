@@ -11,7 +11,7 @@ router.post('/createUser', async (req, res) => {
       password: req.body.password,
       isLoggedIn: req.body.isLoggedIn
     }) 
-    res.render('../views/index.html')
+    res.json({message:"your user data was saved."})
   
   } catch (err) {
     res.json({message: 'Your data was not saved.'})
