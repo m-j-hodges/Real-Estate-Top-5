@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { application } = require('express');
 const { User } = require('../models/users.js')
 
 
@@ -18,8 +19,20 @@ router.post('/createUser', async (req, res) => {
     console.log(err)
   }
   }
-  
   )
+
+  router.get('/User', async (req, res) => {
+    const foundUser = await User.findAll({ where: { username: req.body.username}})
+    if(foundUser) {
+      console.log(foundUser)
+      res.json(foundUser)
+    } else {
+      res.json({message: `user with given ${req.body.username} not found.`})
+    }
+
+  })
+
+
 
   module.exports = router;
   
