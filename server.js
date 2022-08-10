@@ -11,10 +11,8 @@ const cookieParser = require('cookie-parser')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(routes)
+
+
 
 app.use(cookieParser());
 
@@ -30,9 +28,9 @@ const sess = {
     db: sequelize,
   })
 };
-
-
 app.use(session(sess));
+
+
 
 //simple seed to ensure Sequelize is working.
 // app.post('/', async (req,res) => {
@@ -48,8 +46,10 @@ app.use(session(sess));
 // } else {res.status(500).json({message: 'error on server.'})}
 // }
 // )
-
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(routes)
 // run sequelize
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

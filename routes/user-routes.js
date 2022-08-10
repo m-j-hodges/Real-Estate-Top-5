@@ -34,7 +34,14 @@ router.post('/createUser', async (req, res) => {
     }
 
   })
-router.post('/login', async (req,res) => {
+router.get('/login', async (req,res) => {
+  res.render('../views/login.html') //insert handlebars
+
+}
+  
+)
+router.post('/login/', async (req,res) => {
+  try{
     const currentUserPassword = req.body.password
     const queryUser = await User.findOne({where: {email : req.body.email}})
     const bcryptCompare = await bcrypt.compare(currentUserPassword, queryUser.password)
@@ -42,11 +49,21 @@ router.post('/login', async (req,res) => {
       req.body.isLoggedIn = true;
       queryUser.isLoggedIn = true;
       queryUser.save();
-      setTimeout(resetLoggedIn, 1800000)
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        console.log(
+          '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+          req.session.cookie
+        )}
+        )
       res.json({message:`you're now logged in for 30 minutes as ${req.body.username}.`, body: queryUser, isLoggedIn: true})
-    } else {
-      res.json({message: `The password you entered was incorrect, please try again.`, body: {isLoggedIn: false}})
-    }
+        }}
+        catch (err) {
+          res.json({message: "your request to login could not be completed."})
+          console.log(err)
+        }
+
+        
 
 })
 
