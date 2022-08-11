@@ -24,7 +24,7 @@ router.post('/createUser', async (req, res) => {
   }
   )
 
-  router.get('/User', async (req, res) => {
+  router.get('/user', async (req, res) => {
     const foundUser = await User.findAll({ where: { username: req.body.username}})
     if(foundUser) {
       console.log(foundUser)
