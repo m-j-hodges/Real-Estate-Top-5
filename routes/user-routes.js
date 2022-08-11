@@ -63,7 +63,15 @@ router.post('/login/', async (req,res) => {
           console.log(err)
         }
 
-        
+      
+})
+
+router.post('/logout', () => {
+  if(req.session.loggedIn == true ) {
+    req.session.loggedIn = false;
+    res.json()
+
+  }
 
 })
 
