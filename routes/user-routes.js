@@ -3,10 +3,13 @@ const { application } = require('express');
 const { User } = require('../models/users.js')
 const session = require('express-session') 
 const bcrypt = require('bcrypt')
+const cors = require('cors')
 
+let corsOptions = {
+  origin: true
+}
 
-
-router.post('/createUser', async (req, res) => {
+router.post('/createUser', cors(corsOptions), async (req, res) => {
 
   try {
     const UserData = await User.create({
@@ -35,8 +38,11 @@ router.post('/createUser', async (req, res) => {
 
   })
 router.get('/login', async (req,res) => {
+  if(req.body) {
   res.render('../views/login.html') //insert handlebars
-
+  } else {
+    res.json({body: {message: 'Please provide a valid username, email, and password to login.'}})
+  }
 }
   
 )
@@ -66,12 +72,18 @@ router.post('/login/', async (req,res) => {
       
 })
 
-router.post('/logout', () => {
-  if(req.session.loggedIn == true ) {
-    req.session.loggedIn = false;
-    res.json()
+router.post('/logout', (req,res) => {
+  if(req.session.loggedIn) {
+    console.log(`received request to destroy session with id ${req.session.id}`)
+    req.session.destroy(() => {
+      console.log(`The current session was destroyed`)
+    res.render('../views/logout.html') //Place link to future handlebars logout screen here.
+    })
+     
 
-  }
+  } else {res.json({message: 'You could not be logged out due to an error.'})
+console.log(err)
+}
 
 })
 
