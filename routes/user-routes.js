@@ -38,15 +38,14 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
 
   })
 router.get('/login', async (req,res) => {
-  if(req.body) {
-  res.render('../views/login.html') //insert handlebars
-  } else {
-    res.json({body: {message: 'Please provide a valid username, email, and password to login.'}})
+  if(req.session.loggedIn) {
+  res.redirect('/')
+  return;
   }
+  res.render('login')
 }
-  
 )
-router.post('/login/', async (req,res) => {
+router.post('/login', cors(corsOptions), async (req,res) => {
   try{
     const currentUserPassword = req.body.password
     const queryUser = await User.findOne({where: {email : req.body.email}})
@@ -60,11 +59,10 @@ router.post('/login/', async (req,res) => {
         console.log(
           '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
           req.session.cookie
-        )}
         )
-      res.json({message:`you're now logged in for 30 minutes as ${req.body.username}.`, body: queryUser, isLoggedIn: true})
-        }}
-        catch (err) {
+      
+      res.status(200).json({user: queryUser, message: 'You are now logged in!'})})
+        }} catch (err) {
           res.json({message: "your request to login could not be completed."})
           console.log(err)
         }
