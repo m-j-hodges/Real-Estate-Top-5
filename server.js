@@ -8,13 +8,21 @@ const router = require('express').Router();
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-
+app.use(cors())
+app.options('/createUser', cors())
 app.use(cookieParser());
+app.use(bodyParser.json());
+
+let corsOptions = {
+  origin: true
+}
 
 const sess = {
   secret: `mysecret1234`,
@@ -29,6 +37,7 @@ const sess = {
   })
 };
 app.use(session(sess));
+
 
 
 
@@ -52,5 +61,5 @@ app.use(express.static('public'));
 app.use(routes)
 // run sequelize
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
