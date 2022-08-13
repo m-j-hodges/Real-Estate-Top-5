@@ -21,7 +21,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(cors())
-app.options('/createUser', cors())
+app.options('*', cors())
 app.use(cookieParser());
 app.use(bodyParser.json());
 
