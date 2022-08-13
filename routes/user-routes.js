@@ -3,10 +3,13 @@ const { application } = require('express');
 const { User } = require('../models/users.js')
 const session = require('express-session') 
 const bcrypt = require('bcrypt')
+const cors = require('cors')
 
+let corsOptions = {
+  origin: true
+}
 
-
-router.post('/createUser', async (req, res) => {
+router.post('/createUser', cors(corsOptions), async (req, res) => {
 
   try {
     const UserData = await User.create({
@@ -24,7 +27,7 @@ router.post('/createUser', async (req, res) => {
   }
   )
 
-  router.get('/User', async (req, res) => {
+  router.get('/user', async (req, res) => {
     const foundUser = await User.findAll({ where: { username: req.body.username}})
     if(foundUser) {
       console.log(foundUser)
@@ -34,7 +37,17 @@ router.post('/createUser', async (req, res) => {
     }
 
   })
-router.post('/login', async (req,res) => {
+router.get('/login', async (req,res) => {
+  if(req.body) {
+  res.render('../views/login.html') //insert handlebars
+  } else {
+    res.json({body: {message: 'Please provide a valid username, email, and password to login.'}})
+  }
+}
+  
+)
+router.post('/login/', async (req,res) => {
+  try{
     const currentUserPassword = req.body.password
     const queryUser = await User.findOne({where: {email : req.body.email}})
     const bcryptCompare = await bcrypt.compare(currentUserPassword, queryUser.password)
@@ -42,11 +55,35 @@ router.post('/login', async (req,res) => {
       req.body.isLoggedIn = true;
       queryUser.isLoggedIn = true;
       queryUser.save();
-      setTimeout(resetLoggedIn, 1800000)
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        console.log(
+          '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+          req.session.cookie
+        )}
+        )
       res.json({message:`you're now logged in for 30 minutes as ${req.body.username}.`, body: queryUser, isLoggedIn: true})
-    } else {
-      res.json({message: `The password you entered was incorrect, please try again.`, body: {isLoggedIn: false}})
-    }
+        }}
+        catch (err) {
+          res.json({message: "your request to login could not be completed."})
+          console.log(err)
+        }
+
+      
+})
+
+router.post('/logout', (req,res) => {
+  if(req.session.loggedIn) {
+    console.log(`received request to destroy session with id ${req.session.id}`)
+    req.session.destroy(() => {
+      console.log(`The current session was destroyed`)
+    res.render('../views/logout.html') //Place link to future handlebars logout screen here.
+    })
+     
+
+  } else {res.json({message: 'You could not be logged out due to an error.'})
+console.log(err)
+}
 
 })
 
