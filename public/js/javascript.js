@@ -29,6 +29,7 @@ await fetch(`${url}/createUser`, {
   body: JSON.stringify(bodyPayload)
 })
 .then((data) => console.log(data));
+  
 
 })
 
@@ -58,5 +59,21 @@ async function loginFunc() {
     })
     return newData
   }
+
+})
+
+logoutButton.addEventListener((event) => {
+  event.preventDefault();
+  const newUserName = $('#username').val()
+  const newEmail = $('#email').val()
+  const newPassword = $('#password').val()
+
+const bodyPayload = {username: newUserName, email : newEmail, password : newPassword }
+
+logoutFunc()
+
+async function logoutFunc() {
+  await fetch()
+}
 
 })
