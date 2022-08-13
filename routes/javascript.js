@@ -29,7 +29,6 @@ await fetch(`${url}/createUser`, {
   body: JSON.stringify(bodyPayload)
 })
 .then((data) => console.log(data));
-  
 
 })
 
