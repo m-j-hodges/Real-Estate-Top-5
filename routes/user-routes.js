@@ -9,6 +9,31 @@ let corsOptions = {
   origin: true
 }
 
+router.put('/updatePassword', cors(corsOptions), async(req,res) => {
+  try {
+  if(req.session.loggedIn && req.body) {
+    console.log(req.session.id)
+    const searchUser = await User.findOne({where: {email : req.body.email}})
+    if(searchUser) {
+      console.log(`User with matching email (${req.body.password})`);
+      const comparePassword = bcrypt.compare(req.body.password, searchUser.password)
+      if(comparePassword == 1) {
+         //please provide a newPassword property on the body in the fetch()
+        const newPass = req.body.newPassword
+        // if there is a newPassword property on the body object, we will store it in the DB.
+        if(newPass) {
+          searchUser.password = newPass
+          searchUser.save()
+          res.status(200).json({body : searchUser, message: `Your new password has been saved.`})
+          } else { res.json({message: `please provide a valid new password.`})}
+        } else {res.json({message: `The password provided is not correct.`})}
+      } else {res.json({message: `The email provided does not match a user in our database.`})}
+    } else {res.json({message: `Please login before you attempt to change your password.`})}
+  } catch (err) {console.log(err)}})
+      
+
+
+
 router.post('/createUser', cors(corsOptions), async (req, res) => {
 
   try {
@@ -28,6 +53,7 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
   )
 
   router.get('/user', async (req, res) => {
+    try{
     const foundUser = await User.findAll({ where: { username: req.body.username}})
     if(foundUser) {
       console.log(foundUser)
@@ -35,6 +61,9 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
     } else {
       res.json({message: `user with given ${req.body.username} not found.`})
     }
+  } catch (err) { console.log(err)
+  res.json(`There was the following error with processing your request ${err}.`)
+  }
 
   })
 router.get('/login', (req,res) => {
