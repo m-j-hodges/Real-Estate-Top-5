@@ -10,10 +10,15 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(cors())
 app.options('/createUser', cors())
@@ -57,7 +62,7 @@ app.use(session(sess));
 // )
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes)
 // run sequelize
 sequelize.sync({ force: false }).then(() => {

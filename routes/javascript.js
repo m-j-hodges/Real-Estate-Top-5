@@ -23,6 +23,5 @@ await fetch('http://localhost:3001/createUser', {
   body: JSON.stringify(bodyPayload)
 })
 .then((data) => console.log(data));
-  
 
 })
