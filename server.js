@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 
 
 app.use(cors())
-app.options('/createUser', cors())
+app.options('*', cors())
 app.use(cookieParser());
 app.use(bodyParser.json());
 
