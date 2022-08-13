@@ -1,7 +1,10 @@
+
+
 let saveButton = document.getElementById("send-data");
 const url = 'http://localhost:3001'
 let loginButton = document.getElementById("login")
 let logoutButton = document.getElementById('logout')
+let newData
 
 saveButton.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -48,9 +51,13 @@ async function loginFunc() {
     body: JSON.stringify({username: submitUsername, email : submitEmail, password: submitPassword })
     }).then((data) => {
       const response = data.json()
-      console.log(response)
+      return response
+    }).then((response) => {
+      newData = response.body
+      console.log(newData);
+      return newData
     })
-
+    return newData
   }
 
 })

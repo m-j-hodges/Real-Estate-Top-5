@@ -37,12 +37,12 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
     }
 
   })
-router.get('/login', async (req,res) => {
+router.get('/login', (req,res) => {
   if(req.session.loggedIn) {
   res.redirect('/')
   return;
   }
-  res.render('login')
+  res.render('login') //handlebars page with login partial.
 }
 )
 router.post('/login', cors(corsOptions), async (req,res) => {
@@ -61,7 +61,7 @@ router.post('/login', cors(corsOptions), async (req,res) => {
           req.session.cookie
         )
       
-      res.status(200).json({user: queryUser, message: 'You are now logged in!'})})
+      res.status(200).json({body: queryUser, message: 'You are now logged in!'})})
         }} catch (err) {
           res.json({message: "your request to login could not be completed."})
           console.log(err)
@@ -77,22 +77,32 @@ router.post('/logout', (req,res) => {
       console.log(`The current session was destroyed`)
     res.render('../views/logout.html') //Place link to future handlebars logout screen here.
     })
-     
-
   } else {res.json({message: 'You could not be logged out due to an error.'})
 console.log(err)
 }
 
 })
 
+router.delete('/deleteUser', async (req,res) => {
+  try{
+  if(req.session.id) {
+  const searchUser = req.body.email
+  const queryUser = await User.findOne({ where: { email : searchUser}})
+  if(queryUser) {
+  const deleteUser = await User.destroy({where: { email : queryUser.email}})
+  if( deleteUser == 1 ){
+    res.status(200).json({message: `The user with id ${queryUser.username} was deleted.`})
+  }
+  }}
+  else {res.json({message: 'Please login first.'})}
+} catch (err) { 
+  res.json({message: "There was an error processing your request."})
+  console.log(err)}}
+)
 
-async function resetLoggedIn(userData) {
- 
-  const userResult = await User.findOne({where:{ email : userData.email}});
- userResult.isLoggedIn = 0;
- userResult.save()
 
-}
+
+
 
   module.exports = router;
   
