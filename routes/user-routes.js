@@ -69,6 +69,7 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
 router.get('/login', (req,res) => {
   if(req.session.loggedIn) {
   res.redirect('/')
+  console.log("logged in")
   return;
   }
   res.render('login') //handlebars page with login partial.
@@ -158,6 +159,16 @@ catch (err) {
   }
 })
 
+router.get('/properties', async (req, res) => {
+  try {
+    res.render('properties');  
+  }
+  catch (err) {
+      res.status(500).json(err);
+    }
+  })
+
+ 
 
 
   module.exports = router;
