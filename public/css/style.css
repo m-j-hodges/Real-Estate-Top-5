@@ -1,3 +1,4 @@
+
 .wrapper {
   display: flex;
   min-height: 100vh;
@@ -7,6 +8,7 @@
 #header {
   margin-bottom: 50px;
   font-size: 35px;
+  justify-content: center;
 }
 #sidebar {
   overflow: hidden;
@@ -23,16 +25,16 @@
 
 #sidebar a {
   color:white;
+  text-decoration: none;
 }
 
-
 #content {
-  background-color: #f0f2f2;
   flex-grow: 1;
   padding: 20px 50px 50px 70px;
-  margin: 60px;
+  margin: 80px;
   color: rgb(58, 57, 57);
   text-align: center;
+  margin: 20px;
 }
 
 .card {
@@ -49,4 +51,9 @@
 
 ul {
   padding: 0px;
+  
+}
+
+#atl {
+  height: 400px;
 }
