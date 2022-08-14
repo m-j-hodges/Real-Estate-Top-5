@@ -69,6 +69,7 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
 router.get('/login', (req,res) => {
   if(req.session.loggedIn) {
   res.redirect('/')
+  console.log("logged in")
   return;
   }
   res.render('login') //handlebars page with login partial.
@@ -130,7 +131,44 @@ router.delete('/deleteUser', async (req,res) => {
 )
 
 
+router.get('/', async (req, res) => {
+  try {
+    res.render('home');  
+    
+  }
+  catch (err) {
+      res.status(500).json(err);
+    }
+})
 
+router.get('/search', async (req, res) => {
+try {
+  res.render('search');  
+}
+catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+router.get('/newuser', async (req, res) => {
+try {
+  res.render('newuser');  
+}
+catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+router.get('/properties', async (req, res) => {
+  try {
+    res.render('properties');  
+  }
+  catch (err) {
+      res.status(500).json(err);
+    }
+  })
+
+ 
 
 
   module.exports = router;
