@@ -42,12 +42,6 @@
   background-color: rgb(245, 247, 248);
   padding: 0px;
 }
-
-#recentSearches {
-  background-color: white;
-  margin: 0px;
-  padding: 0px;
-}
 #recent {
   font-size: 30px;
 }
@@ -60,8 +54,3 @@ ul {
 #atl {
   height: 400px;
 }
-
-/* form {
-  margin:90px;
-  padding: 20px 300px 20px 300px;
-} */
