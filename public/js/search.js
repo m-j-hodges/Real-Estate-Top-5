@@ -57,6 +57,6 @@ searchBtn.addEventListener('click', function () {
     .then((data) => {
       console.log(data)
     })
-
+  //new comment
   console.log(input)
 })
