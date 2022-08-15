@@ -1,6 +1,7 @@
 const searchBtn = document.getElementById('search-addon')
 const inputEl = document.getElementById('searchProperty')
 // const url = 'https://api.mashvisor.com/v1.1/client/city/properties/GA/'
+//RapidAPI URL
 const url = 'https://mashvisor-api.p.rapidapi.com/city/properties/GA/Atlanta'
 
 const options = {
