@@ -2,9 +2,11 @@ const searchBtn = document.getElementById('search-addon')
 const inputEl = document.getElementById('searchProperty')
 // const url = 'https://api.mashvisor.com/v1.1/client/city/properties/GA/'
 //RapidAPI URL
-const url = 'https://mashvisor-api.p.rapidapi.com/city/properties/GA/Atlanta'
+// let city = 'Atlanta'
+// let input = inputEl.value
+
+const url = `https://mashvisor-api.p.rapidapi.com/city/properties/GA/Atlanta`
 searchBtn.addEventListener('click', function () {
-  //   let input = inputEl.value
   const options = {
     method: 'GET',
     headers: {
@@ -12,7 +14,7 @@ searchBtn.addEventListener('click', function () {
       'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
     },
   }
-
+  //Fetch to rapidapi to mashvisor api
   fetch(`${url}`, options)
     .then((response) => response.json())
     .then((response) => {
@@ -22,6 +24,7 @@ searchBtn.addEventListener('click', function () {
     })
     .catch((err) => console.error(err))
 })
+//Function to show data with attributes
 function showData(data) {
   console.log(data.content.properties)
   let html = ''
