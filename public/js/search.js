@@ -3,20 +3,47 @@ const inputEl = document.getElementById('searchProperty')
 // const url = 'https://api.mashvisor.com/v1.1/client/city/properties/GA/'
 //RapidAPI URL
 const url = 'https://mashvisor-api.p.rapidapi.com/city/properties/GA/Atlanta'
+searchBtn.addEventListener('click', function () {
+  //   let input = inputEl.value
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
+      'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
+    },
+  }
 
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
-    'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
-  },
+  fetch(`${url}`, options)
+    .then((response) => response.json())
+    .then((response) => {
+      showData(response)
+
+      console.log(response)
+    })
+    .catch((err) => console.error(err))
+})
+function showData(data) {
+  console.log(data.content.properties)
+  let html = ''
+  for (let info of data.content.properties) {
+    html =
+      html +
+      `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' class='card-img-top' alt='...'> <div class='card-body'> <h5 class='card-title'> 
+      Address: ${info.address}</h5> 
+      <p class='card-text-right'> 
+      City: ${info.city}<br>
+      Zip Code:${info.zip}<br>
+      Listing Price:${info.list_price_formatted}<br>
+      Square Ft:${info.sqft}<br>
+      Beds:${info.beds}<br>
+      Baths:${info.baths}<br>
+      AirBnB ROI: ${info.airbnb_ROI}<br>
+      Pool:${info.has_pool}<br>
+      Days on market:${info.days_on_market}
+      </p> </div> </div> </div>`
+  }
+  document.getElementById('cards').innerHTML = html
 }
-
-fetch(`${url}`, options)
-  .then((response) => response.json())
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err))
-
 // Not working yet
 // searchBtn.addEventListener('click', function () {
 //   let input = inputEl.value
