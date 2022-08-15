@@ -14,12 +14,12 @@ router.put('/updatePassword', cors(corsOptions), async(req,res) => {
   if(req.session.loggedIn && req.body) {
     console.log(req.session.id)
     const searchUser = await User.findOne({where: {email : req.body.email}})
+    const comparePassword = await bcrypt.compare(req.body.password, searchUser.password)
     if(searchUser) {
-      console.log(`User with matching email (${req.body.password})`);
-      const comparePassword = bcrypt.compare(req.body.password, searchUser.password)
+      console.log(`User with matching email (${req.body.password})`)
       if(comparePassword == 1) {
          //please provide a newPassword property on the body in the fetch()
-        const newPass = req.body.newPassword
+        const newPass = await bcrypt.hash(req.body.newPassword,10)
         // if there is a newPassword property on the body object, we will store it in the DB.
         if(newPass) {
           searchUser.password = newPass
@@ -29,7 +29,8 @@ router.put('/updatePassword', cors(corsOptions), async(req,res) => {
         } else {res.json({message: `The password provided is not correct.`})}
       } else {res.json({message: `The email provided does not match a user in our database.`})}
     } else {res.json({message: `Please login before you attempt to change your password.`})}
-  } catch (err) {console.log(err)}})
+  } catch (err) {console.log(err)
+  res.json({message: `There was an error in updating your password.`})}})
       
 
 
@@ -92,7 +93,11 @@ router.post('/login', cors(corsOptions), async (req,res) => {
         )
       
       res.status(200).json({body: queryUser, message: 'You are now logged in!'})})
-        }} catch (err) {
+        } else {
+          console.log(`There was an error logging you in with the current credentials.`)
+          return
+        }
+      } catch (err) {
           res.json({message: "your request to login could not be completed."})
           console.log(err)
         }
