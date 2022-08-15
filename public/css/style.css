@@ -1,25 +1,23 @@
-
 .wrapper {
   display: flex;
   min-height: 100vh;
-  font-family: 'Quicksand', sans-serif;
+
 }
 
 #sidebar {
- 
   padding: 50px 0px 0px 20px;
   font-size: 18px;
   min-width: 250px;
   width: 200px;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    background: #6d85e6;
-    color: #fff;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #6d85e6;
+  color: #fff;
 }
 
 #sidebar a {
-  color:white;
+  color: white;
   text-decoration: none;
 }
 
@@ -35,7 +33,7 @@ h1 {
   font-weight: bold;
 }
 
-.card {
+/* .card {
   margin: 0 auto; 
   float: none; 
   margin-bottom: 10px; 
@@ -44,14 +42,13 @@ h1 {
   border: none;
   background-color: rgb(245, 247, 248);
   padding: 0px;
-}
+} */
 #recent {
   font-size: 30px;
 }
 
 ul {
   padding: 0px;
-  
 }
 
 #atl {
