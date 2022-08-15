@@ -16,6 +16,7 @@ newFetch(state,city)
 .then( (data) =>{
 if(data.content) {
   searchResult = data.content.properties
+  searchResult = searchResult.splice(0,5)
 }
   if(searchResult) {
     res.status(200).json({message: 'successful', body: searchResult})
@@ -39,37 +40,15 @@ async function newFetch(state,city) {
   const newSearch = await fetch(`https://api.mashvisor.com/v1.1/client/city/properties/${state}/${city}`, {
     method: 'GET',
     headers: {
-      'x-api-key' : 'e9fc1589-f4cd-49a7-bfbb-b81e88d78837'
+      'x-api-key' : `${process.env.apiKey}`
     }})
 const data = await newSearch.json()
 console.log(data)
 return data
 }
 
-//     .then((response) => {
-//       console.log(response.status)
-//       response.body.readable
-//      const readable = response.body
-//       const results = readable.on('readable', () => {
-//         let chunk;
-//         console.log('Stream is readable (new data received)');
-//         while(null !==(chunk = readable.read())) {
-//           console.log(`read ${chunk.length} bytes of data..`)
-//         }
-//       })
-//       .on('end', (chunk) => {
-//         console.log(`Reached end of stream.`)
-//         searchResult = chunk
-//         res.json({message: `Response received from server.`})
-//       })
-//     })
-//   }
-
 
  
-
-// })
-
 
 
 

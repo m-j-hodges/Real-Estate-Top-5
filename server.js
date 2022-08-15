@@ -31,7 +31,7 @@ let corsOptions = {
 }
 
 const sess = {
-  secret: `mysecret1234`,
+  secret: `${process.env.secret_var}`,
   resave: false,
   saveUninitialized: true,
   cookie: {
