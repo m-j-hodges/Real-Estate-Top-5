@@ -28,7 +28,9 @@ searchBtn.addEventListener('click', function () {
 function showData(data) {
   console.log(data.content.properties)
   let html = ''
-  for (let info of data.content.properties) {
+  for (let i = 0; i < 5; i++) {
+    let info = data.content.properties[i]
+
     html =
       html +
       `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' class='card-img-top' alt='...'> <div class='card-body'> <h5 class='card-title'> 
