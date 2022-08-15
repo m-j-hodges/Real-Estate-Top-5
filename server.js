@@ -14,6 +14,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -30,7 +31,7 @@ let corsOptions = {
 }
 
 const sess = {
-  secret: `mysecret1234`,
+  secret: `${process.env.secret_var}`,
   resave: false,
   saveUninitialized: true,
   cookie: {
