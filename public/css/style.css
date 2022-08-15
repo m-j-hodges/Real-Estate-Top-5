@@ -28,6 +28,9 @@
   text-align: center;
   margin: 20px;
 }
+h1 {
+  font-weight: bold;
+}
 
 /* .card {
   margin: 0 auto; 
