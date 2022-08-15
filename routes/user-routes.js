@@ -173,6 +173,16 @@ router.get('/properties', async (req, res) => {
     }
   })
 
+router.get('/login', (req,res) => {
+  try{
+    res.render('login')
+  } catch (err) {
+    console.log(err)
+    res.status(302).redirect('main')
+  }
+
+})
+
  
 
 
