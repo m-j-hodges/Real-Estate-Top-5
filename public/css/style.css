@@ -2,7 +2,7 @@
 .wrapper {
   display: flex;
   min-height: 100vh;
-  
+  font-family: 'Quicksand', sans-serif;
 }
 
 #sidebar {
@@ -30,6 +30,9 @@
   color: rgb(58, 57, 57);
   text-align: center;
   margin: 20px;
+}
+h1 {
+  font-weight: bold;
 }
 
 .card {
