@@ -1,9 +1,5 @@
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
-// const url = 'https://api.mashvisor.com/v1.1/client/city/properties/GA/'
-//RapidAPI URL
-// let city = 'Atlanta'
-// let input = inputEl.value
 
 
 
@@ -36,10 +32,11 @@ function showData(data) {
   let html = ''
   for (let i = 0; i < 5; i++) {
     let info = data[i]
+if(info.has_pool == null) { info.has_pool = 'none'}
 
     html =
       html +
-      `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' class='card-img-top' alt='...'> <div class='card-body'> <h5 class='card-title'> 
+      `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' onerror="this.onerror=null;this.src='../images/coming_soon.jpg'; class='card-img-top' alt='Image not Found'> <div class='card-body'> <h5 class='card-title'> 
       Address: ${info.address}</h5> 
       <p class='card-text-right'> 
       City: ${info.city}<br>
