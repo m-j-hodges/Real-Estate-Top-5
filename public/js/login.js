@@ -1,5 +1,5 @@
 let loginButton = document.getElementById("login")
-const url = 'http://localhost:3001'
+const url = 'https://real-estate-top-5.herokuapp.com'
 
 loginButton.addEventListener('click', (event) => {
     event.preventDefault();
