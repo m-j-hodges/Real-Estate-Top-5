@@ -1,19 +1,25 @@
 const searchBtn = document.getElementById('search-addon')
-const inputEl = document.getElementById('searchProperty')
+let inputEl = document.getElementById('searchProperty')
 // const url = 'https://api.mashvisor.com/v1.1/client/city/properties/GA/'
 //RapidAPI URL
 // let city = 'Atlanta'
 // let input = inputEl.value
 
-const url = `https://mashvisor-api.p.rapidapi.com/city/properties/GA/Atlanta`
+
+
+
 searchBtn.addEventListener('click', function () {
+
+const splitInput = inputEl.value.split(',')
+const inputState = splitInput[1];
+const inputCity = splitInput[0];
+const url = `https://real-estate-top-5.herokuapp.com/api/search/${inputCity}_${inputState}`
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
-      'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
-    },
-  }
+      "Content-Type" : "application/json"
+    }, 
+    }
   //Fetch to rapidapi to mashvisor api
   fetch(`${url}`, options)
     .then((response) => response.json())
@@ -23,13 +29,13 @@ searchBtn.addEventListener('click', function () {
       console.log(response)
     })
     .catch((err) => console.error(err))
-})
+  })
 //Function to show data with attributes
 function showData(data) {
-  console.log(data.content.properties)
+  data = data.body
   let html = ''
   for (let i = 0; i < 5; i++) {
-    let info = data.content.properties[i]
+    let info = data[i]
 
     html =
       html +
