@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+#sidebar {
+  padding: 50px 0px 0px 20px;
+  font-size: 18px;
+  min-width: 250px;
+  width: 200px;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #6d85e6;
+  color: #fff;
+}
+
+#sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+#content {
+  flex-grow: 1;
+  padding: 20px 50px 50px 70px;
+  margin: 80px;
+  color: rgb(58, 57, 57);
+  text-align: center;
+  margin: 20px;
+}
+h1 {
+  font-weight: bold;
+}
+
+/* .card {
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 10px; 
+  width: 900px;
+  height: auto;
+  border: none;
+  background-color: rgb(245, 247, 248);
+  padding: 0px;
+} */
+#recent {
+  font-size: 30px;
+}
+
+ul {
+  padding: 0px;
+}
+
+#atl {
+  height: 400px;
+}
