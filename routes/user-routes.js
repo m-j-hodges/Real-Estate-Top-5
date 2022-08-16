@@ -138,7 +138,7 @@ router.delete('/deleteUser', async (req,res) => {
 
 router.get('/', async (req, res) => {
   try {
-    res.render('home');  
+    res.render('login');  
     
   }
   catch (err) {
@@ -162,25 +162,6 @@ try {
 catch (err) {
     res.status(500).json(err);
   }
-})
-
-router.get('/properties', async (req, res) => {
-  try {
-    res.render('properties');  
-  }
-  catch (err) {
-      res.status(500).json(err);
-    }
-  })
-
-router.get('/login', (req,res) => {
-  try{
-    res.render('login')
-  } catch (err) {
-    console.log(err)
-    res.status(302).redirect('main')
-  }
-
 })
 
  
