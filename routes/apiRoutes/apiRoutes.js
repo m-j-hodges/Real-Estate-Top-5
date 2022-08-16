@@ -3,14 +3,14 @@ const fetch = require('node-fetch')
 const fs = require('fs')
 
 
-router.get('/search', (req,res) => {
-  let city
-  let state
+router.get('/search/:id', (req,res) => {
+  let city = req.params.id.split('_')[0]
+  let state = req.params.id.split('_')[1]
   let searchResult
   try{
-  if(req.body.searchCity || req.body.searchState) {
-    city = req.body.searchCity;
-    state = req.body.searchState;
+  // if(req.body.searchCity || req.body.searchState) {
+  //   city = req.body.searchCity;
+  //   state = req.body.searchState;
   if(state && city) {
 newFetch(state,city)
 .then( (data) =>{
@@ -27,7 +27,7 @@ if(data.content) {
   res.end()
 }
 
-} else {res.json({message: `There was an error completing your search.`})}
+// } else {res.json({message: `There was an error completing your search.`})}
 
 } catch (err) {
   console.log(err)
