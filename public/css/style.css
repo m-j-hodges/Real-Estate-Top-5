@@ -30,18 +30,45 @@
 }
 h1 {
   font-weight: bold;
+ 
+}
+.buttonPurple {
+ 
+  margin: 10px 10px 0px 0px;
+  background-color: rgb(75, 85, 192)!important;
+  color: white!important;
 }
 
-/* .card {
-  margin: 0 auto; 
-  float: none; 
-  margin-bottom: 10px; 
-  width: 900px;
-  height: auto;
-  border: none;
-  background-color: rgb(245, 247, 248);
-  padding: 0px;
-} */
+.headerDiv {
+  margin-bottom: 60px;
+}
+.headerDiv img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left: 60px;
+
+}
+.headerText h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+h2 {
+  margin: 25px 0px 0px 350px;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+.login {
+  background-color: rgb(231, 242, 255)!important;
+  padding-top: 10px;
+  justify-content: center;
+  
+}
 #recent {
   font-size: 30px;
 }
@@ -50,6 +77,14 @@ ul {
   padding: 0px;
 }
 
-#atl {
-  height: 400px;
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: rgb(75, 85, 192)!important;
+  color: white!important;
+}
+label {
+  font-weight: bold;
+}
+
+.loginDiv {
+  margin:0 auto;
 }
