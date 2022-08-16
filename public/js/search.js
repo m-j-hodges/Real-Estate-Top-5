@@ -2,7 +2,16 @@ const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
 
-
+async function checkIfImageExists(url, image) {
+  const res = await fetch(url, {method: "HEAD"})
+  if(res.ok) {
+    console.log("Image exists.")
+  } else {
+    console.log("Image does not exist.")
+    info.image = '/images/logo.png'
+  }
+  
+}
 
 searchBtn.addEventListener('click', function () {
 
@@ -27,16 +36,30 @@ const url = `https://real-estate-top-5.herokuapp.com/api/search/${inputCity}_${i
     .catch((err) => console.error(err))
   })
 //Function to show data with attributes
-function showData(data) {
+async function showData(data) {
   data = data.body
   let html = ''
+  data.forEach(async el => {
+    const response = await fetch(`${el.image}`,{method:"GET"})
+    const resStatus = await response.ok
+    if(response.ok) {
+      console.log(`${el} image exists.`)
+    } else {
+      console.log(`${el} image does not exist.`)
+      el.image = "images/Logo.png"
+      return el.image
+    }
+  })
   for (let i = 0; i < 5; i++) {
     let info = data[i]
+    let image = info.image
+  
 if(info.has_pool == null) { info.has_pool = 'none'}
+// checkIfImageExists(info.image, info.image)
 
     html =
       html +
-      `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' onerror="this.onerror=null;this.src='../images/coming_soon.jpg'; class='card-img-top' alt='Image not Found'> <div class='card-body'> <h5 class='card-title'> 
+      `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' class='card-img-top' alt='Image not Found'> <div class='card-body'> <h5 class='card-title'> 
       Address: ${info.address}</h5> 
       <p class='card-text-right'> 
       City: ${info.city}<br>
