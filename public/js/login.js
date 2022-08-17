@@ -6,7 +6,7 @@ loginButton.addEventListener('click', (event) => {
       const submitUsername = $('#username').val();
       const submitEmail = $('#email').val();
       const submitPassword = $('#password').val();
-      loginFunc()
+      loginFunc();
     async function loginFunc() {
         await fetch(`${url}/login`, {
           method: "POST",

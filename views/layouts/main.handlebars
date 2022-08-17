@@ -15,11 +15,26 @@
 <body>
 
 <header>
-  <ul class="nav justify-content-end  nav-pills">
+
+   <!-- Conditionally render login or logout links -->
+        {{#if loggedIn}}
+         <ul class="nav justify-content-end  nav-pills">
+          <li class="nav-item">
+            <a class="nav-link buttonPurple text-dark" href="/logout">Log out</a>
+          </li>
+          </ul>
+        {{else}}
+          <ul class="nav justify-content-end  nav-pills">
+          <li class="nav-item">
+            <a class="nav-link buttonPurple text-dark" href="/createUser">Create New Account</a>
+          </li>
+          </ul>
+        {{/if}}
+  {{!-- <ul class="nav justify-content-end  nav-pills">
   <li class="nav-item">
     <a class="nav-link buttonPurple text-dark" href="/createUser">Create New Account</a>
   </li>
-  </ul>
+  </ul> --}}
   <div class = "headerDiv">
     <img src="images/Logo.png" alt="logo" />
     <div class="headerText">
