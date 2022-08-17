@@ -14,9 +14,10 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+;
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -30,12 +31,11 @@ let corsOptions = {
 }
 
 const sess = {
-  secret: `mysecret1234`,
+  secret: `${process.env.secret_var}`,
   resave: false,
   saveUninitialized: true,
   cookie: {
-    maxAge: 30*60*1000,
-    isLoggedIn: false,
+    maxAge: 7*60*1000,
   },
   store: new SequelizeStore({
     db: sequelize,

@@ -1,7 +1,7 @@
 
 
 let saveButton = document.getElementById("send-data");
-const url = 'http://localhost:3001'
+const url = 'https://real-estate-top-5.herokuapp.com'
 // let loginButton = document.getElementById("login")
 let logoutButton = document.getElementById('logout')
 let newData
@@ -62,7 +62,7 @@ await fetch(`${url}/createUser`, {
 
 // })
 
-logoutButton.addEventListener((event) => {
+logoutButton.addEventListener('click', (event) => {
   event.preventDefault();
   const newUserName = $('#username').val()
   const newEmail = $('#email').val()
