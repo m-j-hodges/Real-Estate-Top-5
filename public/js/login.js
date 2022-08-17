@@ -1,7 +1,3 @@
-
-
-
-
 let loginButton = document.getElementById("login")
 const url = 'https://real-estate-top-5.herokuapp.com'
 let submitUsername
@@ -12,7 +8,8 @@ loginButton.addEventListener('click', (event) => {
       submitUsername = $('#username').val();
       submitEmail = $('#email').val();
       submitPassword = $('#password').val();
-      loginFunc()})
+      loginFunc()
+      })
 
     async function loginFunc() {
        const res = await fetch(`${url}/login`, {
