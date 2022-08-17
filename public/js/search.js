@@ -3,11 +3,12 @@ const inputEl = document.getElementById("searchProperty");
 const url = "https://api.mashvisor.com/v1.1/client/city/properties/ga/";
 
 
+
 // Not working yet
 searchBtn.addEventListener("click", function () {
    let input = inputEl.value;
 
-   
+
 
 
 
