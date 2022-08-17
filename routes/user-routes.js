@@ -4,12 +4,13 @@ const { User } = require('../models/users.js')
 const session = require('express-session') 
 const bcrypt = require('bcrypt')
 const cors = require('cors')
+const withAuth = require('../utils/auth')
 
 let corsOptions = {
   origin: true
 }
 
-router.put('/updatePassword', cors(corsOptions), async(req,res) => {
+router.put('/updatePassword', withAuth, cors(corsOptions), async(req,res) => {
   try {
   if(req.session.loggedIn && req.body) {
     console.log(req.session.id)
@@ -92,7 +93,7 @@ router.post('/login', cors(corsOptions), async (req,res) => {
           req.session.cookie
         )
       
-      res.status(200).render('search', {loggedIn : req.session.loggedIn})})
+      res.json({body:queryUser, loggedIn : req.session.loggedIn})})
         } else {
           console.log(`There was an error logging you in with the current credentials.`)
           return
@@ -105,7 +106,7 @@ router.post('/login', cors(corsOptions), async (req,res) => {
       
 })
 
-router.post('/logout', (req,res) => {
+router.post('/logout', withAuth, (req,res) => {
   if(req.session.loggedIn) {
     console.log(`received request to destroy session with id ${req.session.id}`)
     req.session.destroy(() => {
@@ -118,7 +119,7 @@ console.log(err)
 
 })
 
-router.delete('/deleteUser', async (req,res) => {
+router.delete('/deleteUser', withAuth, async (req,res) => {
   try{
   if(req.session.id) {
   const searchUser = req.body.email
@@ -146,7 +147,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/search', async (req, res) => {
+router.get('/search', withAuth, async (req, res) => {
 try {
   res.render('search', {loggedIn : req.session.loggedIn});  
 }
