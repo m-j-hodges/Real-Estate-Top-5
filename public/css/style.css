@@ -71,3 +71,7 @@ label {
 .newUser {
   padding: 0px 0px 60px 120px;
 }
+
+.centerInput {
+  margin: auto;
+}
