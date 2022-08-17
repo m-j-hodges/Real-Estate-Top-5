@@ -1,5 +1,41 @@
 
-  <div class="newUser">
+  <div id="newAccount">
+    <div class="center">
+       <div class="col login rounded shadow-sm p-3 mb-5 bg-white rounded">
+      <h4 class='text-center ' >Create an Account</h4>
+      <div class="newUser">
+        <div class="mb-3">
+            <div class="form-group w-75">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control " id='username'>
+          </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group w-75">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group w-75">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id='password'>
+          </div>
+        </div>
+    
+    <button id="send-data" class="btn btn-primary">Create User</button>
+  </div>
+
+
+      </div>
+
+    </div>
+   
+    
+ 
+  
+  
+  {{!-- <div class="newUser">
   <label for="username">Username:
     <input id='username' type="text" width="100px" height="22px"></input>
   </label>
@@ -10,7 +46,7 @@
     <input id='password' type="text" width="100px" height="22px"></input>
   </label>
 
-  <button id="send-data">Create User</button>
+  <button id="send-data">Create User</button> --}}
    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src='./js/javascript.js'></script>

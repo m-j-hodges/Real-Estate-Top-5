@@ -155,9 +155,9 @@ catch (err) {
   }
 })
 
-router.get('/newuser', async (req, res) => {
+router.get('/createUser', async (req, res) => {
 try {
-  res.render('newuser');  
+  res.render('createUser');  
 }
 catch (err) {
     res.status(500).json(err);

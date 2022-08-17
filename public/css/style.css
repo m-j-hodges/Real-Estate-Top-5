@@ -1,40 +1,11 @@
-.wrapper {
-  display: flex;
-  min-height: 100vh;
-}
 
-#sidebar {
-  padding: 50px 0px 0px 20px;
-  font-size: 18px;
-  min-width: 250px;
-  width: 200px;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  background: #6d85e6;
-  color: #fff;
-}
-
-#sidebar a {
-  color: white;
-  text-decoration: none;
-}
-
-#content {
-  flex-grow: 1;
-  padding: 20px 50px 50px 70px;
-  margin: 80px;
-  color: rgb(58, 57, 57);
-  text-align: center;
-  margin: 20px;
-}
 h1 {
   font-weight: bold;
  
 }
 .buttonPurple {
  
-  margin: 10px 10px 0px 0px;
+  margin: 25px 30px 0px 0px;
   background-color: rgb(75, 85, 192)!important;
   color: white!important;
 }
@@ -61,7 +32,7 @@ h2 {
 }
 
 h4 {
-  margin-bottom: 10px;
+  margin: 35px 0pc 20px 0px;
 }
 .login {
   background-color: rgb(231, 242, 255)!important;
@@ -86,5 +57,17 @@ label {
 }
 
 .loginDiv {
-  margin:0 auto;
+  margin-left: 150px;
+  padding-bottom: 50px;
+}
+
+#newAccount { 
+  width: 600px;
+ margin-left: 800px;
+ padding-left: 40px;
+
+}
+
+.newUser {
+  padding: 0px 0px 60px 120px;
 }
