@@ -1,11 +1,17 @@
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
+// inputEl.addEventListener('keypress', (e) => {
+//   if(e.keyCode === 13) {
+//     e.preventDefault();
+//     console.log("You pressed ENTER.")
+//     fetchInfo()
+//   }
+
+// })
 
 
-
-searchBtn.addEventListener('click', function () {
-
+searchBtn.addEventListener('click', (e) => {
 const splitInput = inputEl.value.split(',')
 const inputState = splitInput[1];
 const inputCity = splitInput[0];
@@ -27,16 +33,17 @@ const url = `https://real-estate-top-5.herokuapp.com/api/search/${inputCity}_${i
     .catch((err) => console.error(err))
   })
 //Function to show data with attributes
-function showData(data) {
+async function showData(data) {
   data = data.body
   let html = ''
+
   for (let i = 0; i < 5; i++) {
     let info = data[i]
+    let image = info.image
 if(info.has_pool == null) { info.has_pool = 'none'}
-
     html =
       html +
-      `<div class='col mb-4'> <div class='card h-100'> <img src='${info.image}' onerror="this.onerror=null;this.src='../images/coming_soon.jpg'; class='card-img-top' alt='Image not Found'> <div class='card-body'> <h5 class='card-title'> 
+      `<div class='col mb-4'> <div class='card h-100'> <img src="${info.image}" onerror="this.onerror=null;this.src='/images/coming_soon.jpeg';" /> <div class='card-body'> <h5 class='card-title'> 
       Address: ${info.address}</h5> 
       <p class='card-text-right'> 
       City: ${info.city}<br>
@@ -52,6 +59,27 @@ if(info.has_pool == null) { info.has_pool = 'none'}
   }
   document.getElementById('cards').innerHTML = html
 }
+
+function checkIfImageExists(url, callback) {
+  const img = new Image();
+  img.src = url;
+
+  if (img.complete) {
+    callback(true);
+  } else {
+    img.onload = () => {
+      callback(true);
+    };
+    
+    img.onerror = () => {
+      callback(false);
+    };
+  }
+}
+  
+
+
+
 // Not working yet
 // searchBtn.addEventListener('click', function () {
 //   let input = inputEl.value

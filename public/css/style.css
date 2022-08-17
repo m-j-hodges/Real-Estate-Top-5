@@ -1,47 +1,45 @@
-.wrapper {
-  display: flex;
-  min-height: 100vh;
-}
 
-#sidebar {
-  padding: 50px 0px 0px 20px;
-  font-size: 18px;
-  min-width: 250px;
-  width: 200px;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  background: #6d85e6;
-  color: #fff;
-}
-
-#sidebar a {
-  color: white;
-  text-decoration: none;
-}
-
-#content {
-  flex-grow: 1;
-  padding: 20px 50px 50px 70px;
-  margin: 80px;
-  color: rgb(58, 57, 57);
-  text-align: center;
-  margin: 20px;
-}
 h1 {
   font-weight: bold;
+ 
+}
+.buttonPurple {
+ 
+  margin: 25px 30px 0px 0px;
+  background-color: rgb(75, 85, 192)!important;
+  color: white!important;
 }
 
-/* .card {
-  margin: 0 auto; 
-  float: none; 
-  margin-bottom: 10px; 
-  width: 900px;
-  height: auto;
-  border: none;
-  background-color: rgb(245, 247, 248);
-  padding: 0px;
-} */
+.headerDiv {
+  margin-bottom: 60px;
+}
+.headerDiv img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left: 60px;
+
+}
+.headerText h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+h2 {
+  margin: 25px 0px 0px 350px;
+}
+
+h4 {
+  margin: 35px 0pc 20px 0px;
+}
+.login {
+  background-color: rgb(231, 242, 255)!important;
+  padding-top: 10px;
+  justify-content: center;
+  
+}
 #recent {
   font-size: 30px;
 }
@@ -50,6 +48,26 @@ ul {
   padding: 0px;
 }
 
-#atl {
-  height: 400px;
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: rgb(75, 85, 192)!important;
+  color: white!important;
+}
+label {
+  font-weight: bold;
+}
+
+.loginDiv {
+  margin-left: 150px;
+  padding-bottom: 50px;
+}
+
+#newAccount { 
+  width: 600px;
+ margin-left: 800px;
+ padding-left: 40px;
+
+}
+
+.newUser {
+  padding: 0px 0px 60px 120px;
 }

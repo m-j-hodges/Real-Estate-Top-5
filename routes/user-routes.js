@@ -92,7 +92,7 @@ router.post('/login', cors(corsOptions), async (req,res) => {
           req.session.cookie
         )
       
-      res.status(200).json({body: queryUser, message: 'You are now logged in!'})})
+      res.status(200).render('search', {loggedIn : req.session.loggedIn})})
         } else {
           console.log(`There was an error logging you in with the current credentials.`)
           return
@@ -110,7 +110,7 @@ router.post('/logout', (req,res) => {
     console.log(`received request to destroy session with id ${req.session.id}`)
     req.session.destroy(() => {
       console.log(`The current session was destroyed`)
-    res.render('../views/logout.html') //Place link to future handlebars logout screen here.
+    res.render('../views/logout.html', {loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
     })
   } else {res.json({message: 'You could not be logged out due to an error.'})
 console.log(err)
@@ -138,7 +138,7 @@ router.delete('/deleteUser', async (req,res) => {
 
 router.get('/', async (req, res) => {
   try {
-    res.render('home');  
+    res.render('login', {loggedIn : req.session.loggedIn});  
     
   }
   catch (err) {
@@ -148,40 +148,23 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
 try {
-  res.render('search');  
+  res.render('search', {loggedIn : req.session.loggedIn});  
 }
 catch (err) {
     res.status(500).json(err);
   }
 })
 
-router.get('/newuser', async (req, res) => {
+router.get('/createUser', async (req, res) => {
 try {
-  res.render('newuser');  
+  res.render('createUser', {loggedIn : req.session.loggedIn});  
 }
 catch (err) {
     res.status(500).json(err);
   }
 })
 
-router.get('/properties', async (req, res) => {
-  try {
-    res.render('properties');  
-  }
-  catch (err) {
-      res.status(500).json(err);
-    }
-  })
 
-router.get('/login', (req,res) => {
-  try{
-    res.render('login')
-  } catch (err) {
-    console.log(err)
-    res.status(302).redirect('main')
-  }
-
-})
 
  
 
