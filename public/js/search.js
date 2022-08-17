@@ -1,9 +1,17 @@
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
+// inputEl.addEventListener('keypress', (e) => {
+//   if(e.keyCode === 13) {
+//     e.preventDefault();
+//     console.log("You pressed ENTER.")
+//     fetchInfo()
+//   }
 
-searchBtn.addEventListener('click', function () {
+// })
 
+
+searchBtn.addEventListener('click', (e) => {
 const splitInput = inputEl.value.split(',')
 const inputState = splitInput[1];
 const inputCity = splitInput[0];

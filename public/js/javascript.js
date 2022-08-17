@@ -62,7 +62,7 @@ await fetch(`${url}/createUser`, {
 
 // })
 
-logoutButton.addEventListener((event) => {
+logoutButton.addEventListener('click', (event) => {
   event.preventDefault();
   const newUserName = $('#username').val()
   const newEmail = $('#email').val()
