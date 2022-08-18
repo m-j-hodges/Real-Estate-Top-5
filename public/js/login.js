@@ -12,7 +12,7 @@ loginButton.addEventListener('click', (event) => {
       })
 
     async function loginFunc() {
-       const res = await fetch(`https://real-estate-top-5.herokuapp.com/login`, {
+       const res = await fetch(`${url}/login`, {
           method: "POST",
           headers: {
             "Content-Type" : "application/json",
