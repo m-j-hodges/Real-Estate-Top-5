@@ -22,13 +22,13 @@
         {{#if loggedIn}}
          <ul class="nav justify-content-end  nav-pills ">
           <li class="nav-item ">
-            <a class="nav-link topBtn text-dark" href="/logout">Log out</a>
+            <a class="nav-link topBtn text-dark paddingBtn selectedBtn" href="/logout">Log out</a>
           </li>
           </ul>
         {{else}}
           <ul class="nav justify-content-end nav-pills">
           <li class="nav-item">
-            <a class="nav-link  topBtn text-dark" href="/createUser">Create New Account</a>
+            <a class="nav-link topBtn text-dark paddingBtn selectedBtn" href="/createUser">Create New Account</a>
           </li>
           </ul>
         {{/if}}
@@ -44,71 +44,6 @@
 </header>
 
 {{{body}}}
-
-
- {{!-- <div class="wrapper">
-
-    <!-- Sidebar -->
-    <div id="sidebar">
-         <nav >
-          <ul class="list-unstyled components">
-           <li>
-              <a href="/">Home</a>
-            </li>
-            
-            <li>
-              <a href="/newuser">New User</a>
-            </li> 
-            <li>
-              <a href="/search">Search</a>
-            </li>
-            <li>
-              <a href="/login">Login</a>
-            </li>
-            <li>
-              <a href="/logout">Log out</a>
-            </li>
-          </nav>
-    </div>
-    
-    <div id="content">
-      <h1 id="header">
-      Real Estate Top 5
-      </h1>
-      <h2>
-      Find Your Next Investment 
-      </h2>
       
-         {{{body}}}
-    </div> --}}
-
-</div>       
-
-  {{!-- <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-     
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/search">Search</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
-
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}} --}}
 </body>
 </html>
