@@ -3,7 +3,7 @@
 
 }
 #homeImg {
-  margin-top: 40px;
+  margin-top: 65px;
   max-width: 700px;
   height: auto;
 }
@@ -20,9 +20,7 @@
 .topBtn:hover {
   background-color: rgb(40, 48, 130)!important;
 }
-.headerDiv {
-  margin-bottom: 60px;
-}
+
 .headerDiv img {
   float: left;
   width: 100px;
@@ -33,12 +31,13 @@
 .headerText h1 {
   position: relative;
   top: 18px;
-  left: 10px;
+  left: 30px;
   font-family: 'Archivo Black', sans-serif;
 }
 
 h2 {
-  margin: 25px 0px 0px 350px;
+  margin: 25px 0px 0px 360px;
+  font-family: 'Raleway', sans-serif;
 }
 
 h4 {
@@ -47,6 +46,7 @@ h4 {
 .login {
   background-color: rgb(231, 242, 255)!important;
   padding-top: 10px;
+  margin-top: 60px;
   justify-content: center;
   
 }
@@ -67,7 +67,7 @@ label {
 }
 
 .loginDiv {
-  margin-left: 120px;
+  margin-left: 110px;
   padding-bottom: 50px;
 }
 
