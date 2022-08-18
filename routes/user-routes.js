@@ -70,11 +70,11 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
   })
 router.get('/login', (req,res) => {
   if(req.session.loggedIn) {
-  res.redirect('/search')
+  res.render('/search', {loggedIn : req.session.loggedIn})
   console.log("logged in")
   return;
   }
-  res.render('search', {loggedIn : req.session.loggedIn}) //handlebars page with login partial.
+  res.render('/', {loggedIn : req.session.loggedIn}) //handlebars page with login partial.
 }
 )
 router.post('/login', cors(corsOptions), async (req,res) => {
@@ -94,7 +94,7 @@ router.post('/login', cors(corsOptions), async (req,res) => {
         )
       
       })
-      res.render('search', {loggedIn : req.session.loggedIn})
+      res.json({body: queryUser, loggedIn : req.session.loggedIn})
         } else {
           console.log(`There was an error logging you in with the current credentials.`)
           return
@@ -107,12 +107,12 @@ router.post('/login', cors(corsOptions), async (req,res) => {
       
 })
 
-router.post('/logout', withAuth, (req,res) => {
+router.post('/logout', (req,res) => {
   if(req.session.loggedIn) {
     console.log(`received request to destroy session with id ${req.session.id}`)
     req.session.destroy(() => {
       console.log(`The current session was destroyed`)
-    res.render('logout', {loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
+    res.json({loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
     })
   } else {res.json({message: 'You could not be logged out due to an error.'})
 console.log(err)
