@@ -1,15 +1,25 @@
+#logo{
+  padding-bottom: 10px;
 
-h1 {
-  font-weight: bold;
- 
 }
-.buttonPurple {
- 
+#homeImg {
+  margin-top: 40px;
+  max-width: 700px;
+  height: auto;
+}
+
+#login:hover {
+  background-color: rgb(40, 48, 130)!important;
+}
+.topBtn {
   margin: 25px 30px 0px 0px;
   background-color: rgb(75, 85, 192)!important;
   color: white!important;
 }
 
+.topBtn:hover {
+  background-color: rgb(40, 48, 130)!important;
+}
 .headerDiv {
   margin-bottom: 60px;
 }
@@ -57,7 +67,7 @@ label {
 }
 
 .loginDiv {
-  margin-left: 150px;
+  margin-left: 120px;
   padding-bottom: 50px;
 }
 
