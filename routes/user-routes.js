@@ -70,7 +70,7 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
   })
 router.get('/login', (req,res) => {
   if(req.session.loggedIn) {
-  res.render('/search', {loggedIn : req.session.loggedIn})
+  res.render('search', {loggedIn : req.session.loggedIn})
   console.log("logged in")
   return;
   }
@@ -92,9 +92,9 @@ router.post('/login', cors(corsOptions), async (req,res) => {
           '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
           req.session.cookie
         )
-      
-      })
       res.json({body: queryUser, loggedIn : req.session.loggedIn})
+      })
+      
         } else {
           console.log(`There was an error logging you in with the current credentials.`)
           return
@@ -165,6 +165,28 @@ catch (err) {
     res.status(500).json(err);
   }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// router.get('/logout', withAuth, async (req, res) => {
+//   try {
+//     res.render('logout', {loggedIn : req.session.loggedIn});  
+//   }
+//   catch (err) {
+//       res.status(500).json(err);
+//     }
+//   })
 
 
 
