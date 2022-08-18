@@ -4,7 +4,7 @@ const fs = require('fs')
 const withAuth = require('../../utils/auth')
 
 
-router.get('/search/:id', withAuth, (req,res) => {
+router.get('/search/:id', (req,res) => {
   let city = req.params.id.split('_')[0]
   let state = req.params.id.split('_')[1]
   let searchResult
