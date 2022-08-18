@@ -43,9 +43,15 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       isLoggedIn: req.body.isLoggedIn
-    }) 
-    res.json({message:"you have successfully created an account."})
-  
+    })
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      console.log(
+        '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+        req.session.cookie
+      )
+    res.json({message: 'your account was successfully created', body: queryUser, loggedIn : req.session.loggedIn})
+    })
   } catch (err) {
     res.json({message: 'Your data was not saved.'})
     console.log(err)

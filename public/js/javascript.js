@@ -18,7 +18,7 @@ saveButton.addEventListener("click", async (event) => {
   // requestBody.email = newEmail;
   // requestBody.password = newPassword;
 
-await fetch(`${url}/createUser`, {
+const newResponse = await fetch(`${url}/createUser`, {
   method: 'POST',
   headers: {
     'Content-Type' : 'application/json',
@@ -28,10 +28,17 @@ await fetch(`${url}/createUser`, {
   referrerPolicy: 'no-referrer',
   body: JSON.stringify(bodyPayload)
 })
-.then((data) => console.log(data));
-  
+const responseBody = await newResponse.json();
+const createUserBtn =  $('#send-data')
+if(responseBody.message) {
+  createUserBtn.after(`<p>&#9745; User account created for ${newUserName}</p>`)
+  console.log(responseBody.message)
+  window.location.href = `${window.location.origin}/search`
+}
+  else {createUserBtn.after(`<p>There was an error creating your account.</p>`)}
+}
 
-})
+)
 
 // loginButton.addEventListener('click', (event) => {
 // event.preventDefault();
