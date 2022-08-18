@@ -20,12 +20,10 @@ saveButton.addEventListener("click", async (event) => {
 
 const newResponse = await fetch(`${url}/createUser`, {
   method: 'POST',
+  mode: 'cors',
   headers: {
     'Content-Type' : 'application/json',
-    'Access-Control-Allow-Origin' : '*'
   },
-  redirect: 'follow',
-  referrerPolicy: 'no-referrer',
   body: JSON.stringify(bodyPayload)
 })
 const responseBody = await newResponse.json();
