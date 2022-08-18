@@ -163,27 +163,14 @@ catch (err) {
   }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// router.get('/logout', withAuth, async (req, res) => {
-//   try {
-//     res.render('logout', {loggedIn : req.session.loggedIn});  
-//   }
-//   catch (err) {
-//       res.status(500).json(err);
-//     }
-//   })
+router.get('/logout', withAuth, async (req, res) => {
+  try {
+    res.render('logout', {loggedIn : req.session.loggedIn});  
+  }
+  catch (err) {
+      res.status(500).json(err);
+    }
+  })
 
 
 

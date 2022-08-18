@@ -8,7 +8,14 @@
   height: auto;
 }
 
+
+.topBtn:hover {
+  background-color: rgb(40, 48, 130)!important;
+}
 #login:hover {
+  background-color: rgb(40, 48, 130)!important;
+}
+#send-data:hover {
   background-color: rgb(40, 48, 130)!important;
 }
 .topBtn {
@@ -17,9 +24,7 @@
   color: white!important;
 }
 
-.topBtn:hover {
-  background-color: rgb(40, 48, 130)!important;
-}
+
 
 .headerDiv img {
   float: left;
@@ -84,4 +89,16 @@ label {
 
 .centerInput {
   margin: auto;
+}
+
+.headerText {
+  margin-bottom: 50px;
+}
+
+.paddingBtn {
+  padding: 12px;
+}
+.selectedBtn:focus,.selectedBtn:active {
+  outline: none!important;
+  box-shadow: none!important;
 }
