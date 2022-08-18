@@ -112,7 +112,7 @@ router.post('/logout', withAuth, (req,res) => {
     console.log(`received request to destroy session with id ${req.session.id}`)
     req.session.destroy(() => {
       console.log(`The current session was destroyed`)
-    res.render('../views/logout.html', {loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
+    res.render('logout', {loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
     })
   } else {res.json({message: 'You could not be logged out due to an error.'})
 console.log(err)

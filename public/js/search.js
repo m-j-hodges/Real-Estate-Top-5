@@ -36,6 +36,7 @@ const url = `https://real-estate-top-5.herokuapp.com/api/search/${inputCity}_${i
 async function showData(data) {
   data = data.body
   let html = ''
+//put LocalStorage code here.
 
   for (let i = 0; i < 5; i++) {
     let info = data[i]
