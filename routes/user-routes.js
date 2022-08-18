@@ -45,7 +45,7 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
       password: req.body.password,
       isLoggedIn: req.body.isLoggedIn
     }) 
-    res.json({message:"your user data was saved."})
+    res.json({message:"you have successfully created an account."})
   
   } catch (err) {
     res.json({message: 'Your data was not saved.'})
@@ -54,7 +54,7 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
   }
   )
 
-  router.get('/user', async (req, res) => {
+  router.get('/user', withAuth, async (req, res) => {
     try{
     const foundUser = await User.findAll({ where: { username: req.body.username}})
     if(foundUser) {
@@ -70,11 +70,11 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
   })
 router.get('/login', (req,res) => {
   if(req.session.loggedIn) {
-  res.redirect('/')
+  res.redirect('/search')
   console.log("logged in")
   return;
   }
-  res.render('login') //handlebars page with login partial.
+  res.render('search', {loggedIn : req.session.loggedIn}) //handlebars page with login partial.
 }
 )
 router.post('/login', cors(corsOptions), async (req,res) => {
@@ -93,7 +93,8 @@ router.post('/login', cors(corsOptions), async (req,res) => {
           req.session.cookie
         )
       
-      res.json({body:queryUser, loggedIn : req.session.loggedIn})})
+      })
+      res.render('search', {loggedIn : req.session.loggedIn})
         } else {
           console.log(`There was an error logging you in with the current credentials.`)
           return

@@ -43,7 +43,7 @@ async function showData(data) {
 if(info.has_pool == null) { info.has_pool = 'none'}
     html =
       html +
-      `<div class='col mb-4'> <div class='card h-100'> <img src="${info.image}" onerror="this.onerror=null;this.src='/images/coming_soon.jpeg';" /> <div class='card-body'> <h5 class='card-title'> 
+      `<div class='col mb-4'> <div class='card h-100'> <img src="${info.image}" onerror="this.onerror=null;this.src='images/coming_soon.jpeg';" /> <div class='card-body'> <h5 class='card-title'> 
       Address: ${info.address}</h5> 
       <p class='card-text-right'> 
       City: ${info.city}<br>
