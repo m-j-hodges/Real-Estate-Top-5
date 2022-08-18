@@ -28,15 +28,20 @@ const newResponse = await fetch(`${url}/createUser`, {
 })
 const responseBody = await newResponse.json();
 const createUserBtn =  $('#send-data')
+
 if(responseBody.message) {
-  createUserBtn.after(`<p>&#9745; User account created for ${newUserName}</p>`)
   console.log(responseBody.message)
-  window.location.href = `${window.location.origin}/search`
+  createUserBtn.after(`<p>&#9745; User account created for ${newUserName}</p>`)
+  setTimeout(createDelay, 5000)
 }
   else {createUserBtn.after(`<p>There was an error creating your account.</p>`)}
 }
 
 )
+
+function createDelay() {
+  window.location.href = `${window.location.origin}/search`
+}
 
 // loginButton.addEventListener('click', (event) => {
 // event.preventDefault();
