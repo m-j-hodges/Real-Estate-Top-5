@@ -105,11 +105,11 @@ router.post('/login', cors(corsOptions), async (req,res) => {
 })
 
 router.post('/logout', (req,res) => {
-  if(req.session.loggedIn) {
+  if(req.session.id) {
     console.log(`received request to destroy session with id ${req.session.id}`)
     req.session.destroy(() => {
       console.log(`The current session was destroyed`)
-    res.json({loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
+    res.json({message: 'Your session has been destroyed.'}) //Place link to future handlebars logout screen here.
     })
   } else {res.json({message: 'You could not be logged out due to an error.'})
 console.log(err)
