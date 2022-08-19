@@ -50,23 +50,19 @@ async function showData(data) {
     html =
       html +
       `<div id="${i}" class='col mb-4' onclick='opendetail(this.id)'> <div class='card h-100'> <img src="${info.image}" onerror="this.onerror=null;this.src='images/coming_soon.jpeg';" /> <div class='card-body'> <h5 class='card-title'> 
-    Address: ${info.address}</h5> 
+      <b>Address: </b>  ${info.address} </h5> 
     <p class='card-text-right'> 
-    City: ${info.city}  State:  ${info.state} <br>
-    Zip Code: ${info.zip}<br>
-    Listing Price: ${info.list_price_formatted}<br>
-    Square Ft: ${info.sqft}<br>
-    Beds: ${info.beds}<br>
-    Baths: ${info.baths}<br>
-    AirBnB ROI: ${info.airbnb_ROI}<br>
-    Pool: ${info.has_pool}<br>
-    Days on market: ${info.days_on_market}
+    <b>City:  </b> ${info.city} <br>
+    <b>State:  </b>  ${info.state} <br>
+    <b>Zip Code:  </b> ${info.zip}<br>
+    <b>Listing Price:  </b> ${info.list_price_formatted}<br>
+    <b>Square Ft: </b> ${info.sqft}<br>
     </p> </div> </div> </div>`
   }
   document.getElementById('cards').innerHTML = html
 }
 
-//function to display detail about property when property card is click on from search results
+//function to display detail about property when property card is clicked on from search results
 function opendetail(i) {
   document.getElementById('searchholder').style.display = 'none'
   document.getElementById('propertydetail').style.display = 'block'
@@ -93,7 +89,7 @@ function opendetail(i) {
 `
   document.getElementById('propertyInfo').innerHTML = html
 }
-//function that closes property infomation page and goes back to search results.
+//function that closes property information page and goes back to search results.
 function closedetail() {
   document.getElementById('searchholder').style.display = 'block'
   document.getElementById('propertydetail').style.display = 'none'
@@ -115,58 +111,3 @@ function checkIfImageExists(url, callback) {
     }
   }
 }
-
-// Not working yet
-// searchBtn.addEventListener('click', function () {
-//   let input = inputEl.value
-
-//   fetch(`${url}${input}`, {
-//       headers: {
-//         'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
-//         'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
-//         'Access-Control-Allow-Origin': '*',
-//         // 'x-api-key': 'f206ffc1-0ffa-4f45-b13c-826b47e7b298',
-//       }
-//     .then((response) => response.json())
-//     .then((response) => console.log(response))
-//     .catch((err) => console.error(err))
-
-//   // fetch(`${url}${input}`, {
-//   //   headers: {
-//   //     'Access-Control-Allow-Origin': 'https://api.mashvisor.com',
-//   //     'x-api-key': 'f206ffc1-0ffa-4f45-b13c-826b47e7b298',
-//   //   },
-//   //   accept: '*/*',
-//   //   mode: 'no-cors',
-//   //   credentials: 'include',
-//   //   connection: 'keep-alive',
-//   // })
-//   //   .then((response) => {
-//   //     return response.json()
-//   //   })
-//   //   .then((data) => {
-//   //     console.log(data)
-//   //   })
-
-//   // fetch(`${url}${input}`, {
-//   //   headers: {
-//   //     'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
-//   //     'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
-//   //     'Access-Control-Allow-Origin': '*',
-//   //     // 'x-api-key': 'f206ffc1-0ffa-4f45-b13c-826b47e7b298',
-//   //   },
-//   //   accept: '*/*',
-//   //   credentials: 'include',
-//   //   connection: 'keep-alive',
-//   // })
-//   //   .then((response) => {
-//   //     console.log(`${url}${input}`)
-//   //     console.log(response)
-//   //     return response.json()
-//   //   })
-//   //   .then((data) => {
-//   //     console.log(data)
-//   //   })
-//   // //new comment
-//   // console.log(input)
-// })
