@@ -1,6 +1,10 @@
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
+let logoutBtn = document.getElementsByClassName('text-dark')
+
+
+
 // inputEl.addEventListener('keypress', (e) => {
 //   if(e.keyCode === 13) {
 //     e.preventDefault();

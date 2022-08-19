@@ -32,6 +32,7 @@ async function loginFunc() {
       '<p id="loginMessage">&#x2611; you have been logged in.</p>',
     )
     setTimeout(clearLoginMessage, 3000)
+    window.location.href = `${window.location.origin}/search`
   } else if (responseBody.message) {
     loginInfoIncorrect()
     setTimeout(clearRetryMessage, 3000)
@@ -41,9 +42,6 @@ async function loginFunc() {
 function clearLoginMessage() {
   const loginMessage = $('#loginMessage')
   loginMessage.hide()
-  const origin = window.location.origin
-  console.log(origin)
-  window.location.href = `${origin}/search`
 }
 
 function loginInfoIncorrect() {

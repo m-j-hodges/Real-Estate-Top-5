@@ -7,7 +7,7 @@ const { Utils } = require('./config/connection');
 const router = require('express').Router();
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const exphbs = require('express-handlebars');
@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars');
 
 app.use(cors())
 app.options('*', cors())
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(bodyParser.json());
 
 let corsOptions = {
@@ -36,6 +36,7 @@ const sess = {
   saveUninitialized: true,
   cookie: {
     maxAge: 7*60*1000,
+    loggedIn: false,
   },
   store: new SequelizeStore({
     db: sequelize,

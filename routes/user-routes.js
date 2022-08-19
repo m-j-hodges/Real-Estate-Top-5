@@ -6,13 +6,13 @@ const bcrypt = require('bcrypt')
 const cors = require('cors')
 const withAuth = require('../utils/auth')
 
+
 let corsOptions = {
   origin: true
 }
 
 router.put('/updatePassword', withAuth, cors(corsOptions), async(req,res) => {
   try {
-  if(req.session.loggedIn && req.body) {
     console.log(req.session.id)
     const searchUser = await User.findOne({where: {email : req.body.email}})
     const comparePassword = await bcrypt.compare(req.body.password, searchUser.password)
@@ -29,7 +29,6 @@ router.put('/updatePassword', withAuth, cors(corsOptions), async(req,res) => {
           } else { res.json({message: `please provide a valid new password.`})}
         } else {res.json({message: `The password provided is not correct.`})}
       } else {res.json({message: `The email provided does not match a user in our database.`})}
-    } else {res.json({message: `Please login before you attempt to change your password.`})}
   } catch (err) {console.log(err)
   res.json({message: `There was an error in updating your password.`})}})
       
@@ -44,9 +43,15 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       isLoggedIn: req.body.isLoggedIn
-    }) 
-    res.json({message:"you have successfully created an account."})
-  
+    })
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      console.log(
+        '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+        req.session.cookie
+      )
+    res.json({message: 'your account was successfully created', loggedIn : req.session.loggedIn})
+    })
   } catch (err) {
     res.json({message: 'Your data was not saved.'})
     console.log(err)
@@ -69,12 +74,10 @@ router.post('/createUser', cors(corsOptions), async (req, res) => {
 
   })
 router.get('/login', (req,res) => {
-  if(req.session.loggedIn) {
+ if(req.session.id) {
   res.render('search', {loggedIn : req.session.loggedIn})
-  console.log("logged in")
-  return;
-  }
-  res.render('/', {loggedIn : req.session.loggedIn}) //handlebars page with login partial.
+ }
+  res.render('login', {loggedIn : req.session.loggedIn}) //handlebars page with login partial.
 }
 )
 router.post('/login', cors(corsOptions), async (req,res) => {
@@ -108,11 +111,11 @@ router.post('/login', cors(corsOptions), async (req,res) => {
 })
 
 router.post('/logout', (req,res) => {
-  if(req.session.loggedIn) {
+  if(req.session.id) {
     console.log(`received request to destroy session with id ${req.session.id}`)
     req.session.destroy(() => {
       console.log(`The current session was destroyed`)
-    res.json({loggedIn : req.session.loggedIn}) //Place link to future handlebars logout screen here.
+    res.json({message: 'Your session has been destroyed.'}) //Place link to future handlebars logout screen here.
     })
   } else {res.json({message: 'You could not be logged out due to an error.'})
 console.log(err)
@@ -166,27 +169,14 @@ catch (err) {
   }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// router.get('/logout', withAuth, async (req, res) => {
-//   try {
-//     res.render('logout', {loggedIn : req.session.loggedIn});  
-//   }
-//   catch (err) {
-//       res.status(500).json(err);
-//     }
-//   })
+router.get('/logout', withAuth, async (req, res) => {
+  try {
+    res.render('logout', {loggedIn : req.session.loggedIn});  
+  }
+  catch (err) {
+      res.status(500).json(err);
+    }
+  })
 
 
 
