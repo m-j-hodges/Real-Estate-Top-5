@@ -25,13 +25,14 @@
             <a class="nav-link topBtn text-dark paddingBtn selectedBtn" href="/logout">Log out</a>
           </li>
           </ul>
-        {{else}}
+        {{/if}}
+        {{#unless loggedIn}}
           <ul class="nav justify-content-end nav-pills">
           <li class="nav-item">
             <a class="nav-link topBtn text-dark paddingBtn selectedBtn" href="/createUser">Create New Account</a>
           </li>
           </ul>
-        {{/if}}
+          {{/unless}}
   <div class = "headerDiv">
     <img src="images/Logo.png" alt="logo" id="logo" />
     <div class="headerText">
