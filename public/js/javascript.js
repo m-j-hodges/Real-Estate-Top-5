@@ -18,20 +18,30 @@ saveButton.addEventListener("click", async (event) => {
   // requestBody.email = newEmail;
   // requestBody.password = newPassword;
 
-await fetch(`${url}/createUser`, {
+const newResponse = await fetch(`${url}/createUser`, {
   method: 'POST',
+  mode: 'cors',
   headers: {
     'Content-Type' : 'application/json',
-    'Access-Control-Allow-Origin' : '*'
   },
-  redirect: 'follow',
-  referrerPolicy: 'no-referrer',
   body: JSON.stringify(bodyPayload)
 })
-.then((data) => console.log(data));
-  
+const responseBody = await newResponse.json();
+const createUserBtn =  $('#send-data')
 
-})
+if(responseBody.message) {
+  console.log(responseBody.message)
+  createUserBtn.after(`<p>&#9745; User account created for ${newUserName}</p>`)
+  setTimeout(createDelay, 5000)
+}
+  else {createUserBtn.after(`<p>There was an error creating your account.</p>`)}
+}
+
+)
+
+function createDelay() {
+  window.location.href = `${window.location.origin}/search`
+}
 
 // loginButton.addEventListener('click', (event) => {
 // event.preventDefault();
