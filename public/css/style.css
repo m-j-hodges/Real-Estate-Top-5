@@ -71,12 +71,14 @@ label {
 .loginDiv {
   margin-left: 110px;
   padding-bottom: 50px;
+
 }
 
 #newAccount {
   width: 600px;
-  margin: auto;
-  padding-left: 40px;
+ margin: auto;
+ padding-left: 40px;
+
 }
 
 .newUser {
