@@ -1,25 +1,15 @@
 #logo {
   padding-bottom: 10px;
 }
+
 #homeImg {
   margin-top: 65px;
   max-width: 700px;
   height: auto;
 }
 
-.topBtn:hover {
-  background-color: rgb(40, 48, 130) !important;
-}
-#login:hover {
-  background-color: rgb(40, 48, 130) !important;
-}
-#send-data:hover {
-  background-color: rgb(40, 48, 130) !important;
-}
-.topBtn {
-  margin: 25px 30px 0px 0px;
-  background-color: rgb(75, 85, 192) !important;
-  color: white !important;
+#deletedMsg {
+  font-size: 15px;
 }
 
 .headerDiv img {
@@ -99,4 +89,18 @@ label {
 .selectedBtn:focus,.selectedBtn:active {
   outline: none!important;
   box-shadow: none!important;
+}
+.topBtn:hover {
+  background-color: rgb(40, 48, 130) !important;
+}
+#login:hover {
+  background-color: rgb(40, 48, 130) !important;
+}
+#send-data:hover {
+  background-color: rgb(40, 48, 130) !important;
+}
+.topBtn {
+  margin: 25px 30px 0px 0px;
+  background-color: rgb(75, 85, 192) !important;
+  color: white !important;
 }
