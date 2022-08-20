@@ -3,8 +3,26 @@
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
+
 let logoutBtn = document.getElementsByClassName('text-dark')
 let recentSearches = document.getElementById('recentSearches')
+
+window.onload = () => {
+  if(localStorage.getItem('search1')) {
+    const recentSearch = localStorage.getItem('search1')
+    const parsedRecentSearch = JSON.parse(recentSearch)
+
+    parsedRecentSearch.forEach(el => {
+      $(`.centerInput`).after(`<h3>${el}</h3>`)
+
+    })
+    
+  
+  }
+  
+
+}
+
 
 // inputEl.addEventListener('keypress', (e) => {
 //   if(e.keyCode === 13) {
@@ -44,6 +62,14 @@ async function showData(data) {
   list = data
   let html = ''
 //put LocalStorage code here.
+let cities = []
+let getStorage = JSON.parse(localStorage.getItem('search1'))
+
+const searchField = document.getElementById('searchProperty').value
+cities.push(searchField)
+const newStorage = JSON.stringify(cities)
+localStorage.setItem('search1', newStorage)
+
 
   for (let i = 0; i < 5; i++) {
     var info = data[i]
