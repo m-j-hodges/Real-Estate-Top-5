@@ -28,6 +28,14 @@
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.7",
+<<<<<<< HEAD
+    "path": "^0.12.7",
+    "sequelize": "^6.21.3"
+=======
+    "package-json": "^8.1.0",
+    "package-lock.json": "^1.0.0",
+    "package.json": "^2.0.1",
     "path": "^0.12.7"
+>>>>>>> main
   }
 }

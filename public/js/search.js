@@ -1,7 +1,10 @@
+
+
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
 let logoutBtn = document.getElementsByClassName('text-dark')
+let recentSearches = document.getElementById('recentSearches')
 
 // inputEl.addEventListener('keypress', (e) => {
 //   if(e.keyCode === 13) {
@@ -11,6 +14,7 @@ let logoutBtn = document.getElementsByClassName('text-dark')
 //   }
 
 // })
+
 
 searchBtn.addEventListener('click', (e) => {
   const splitInput = inputEl.value.split(',')
@@ -29,7 +33,7 @@ searchBtn.addEventListener('click', (e) => {
     .then((response) => {
       showData(response)
 
-      console.log(response)
+      console.log(response.body)
     })
     .catch((err) => console.error(err))
 })
@@ -39,7 +43,7 @@ async function showData(data) {
   data = data.body
   list = data
   let html = ''
-  //put LocalStorage code here.
+//put LocalStorage code here.
 
   for (let i = 0; i < 5; i++) {
     var info = data[i]
@@ -59,6 +63,7 @@ async function showData(data) {
     <b>Square Ft: </b> ${info.sqft}<br>
     </p> </div> </div> </div>`
   }
+
   document.getElementById('cards').innerHTML = html
 }
 
@@ -107,7 +112,65 @@ function checkIfImageExists(url, callback) {
     }
 
     img.onerror = () => {
-      callback(false)
-    }
+      callback(false);
+    };
   }
 }
+  
+
+
+
+// Not working yet
+// searchBtn.addEventListener('click', function () {
+//   let input = inputEl.value
+
+//   fetch(`${url}${input}`, {
+//       headers: {
+//         'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
+//         'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
+//         'Access-Control-Allow-Origin': '*',
+//         // 'x-api-key': 'f206ffc1-0ffa-4f45-b13c-826b47e7b298',
+//       }
+//     .then((response) => response.json())
+//     .then((response) => console.log(response))
+//     .catch((err) => console.error(err))
+
+//   // fetch(`${url}${input}`, {
+//   //   headers: {
+//   //     'Access-Control-Allow-Origin': 'https://api.mashvisor.com',
+//   //     'x-api-key': 'f206ffc1-0ffa-4f45-b13c-826b47e7b298',
+//   //   },
+//   //   accept: '*/*',
+//   //   mode: 'no-cors',
+//   //   credentials: 'include',
+//   //   connection: 'keep-alive',
+//   // })
+//   //   .then((response) => {
+//   //     return response.json()
+//   //   })
+//   //   .then((data) => {
+//   //     console.log(data)
+//   //   })
+
+//   // fetch(`${url}${input}`, {
+//   //   headers: {
+//   //     'X-RapidAPI-Key': '0af9b30551msh4f1b4f215df9640p10d116jsn07fcc8f449ab',
+//   //     'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
+//   //     'Access-Control-Allow-Origin': '*',
+//   //     // 'x-api-key': 'f206ffc1-0ffa-4f45-b13c-826b47e7b298',
+//   //   },
+//   //   accept: '*/*',
+//   //   credentials: 'include',
+//   //   connection: 'keep-alive',
+//   // })
+//   //   .then((response) => {
+//   //     console.log(`${url}${input}`)
+//   //     console.log(response)
+//   //     return response.json()
+//   //   })
+//   //   .then((data) => {
+//   //     console.log(data)
+//   //   })
+//   // //new comment
+//   // console.log(input)
+// })
