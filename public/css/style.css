@@ -78,7 +78,9 @@ label {
 .centerInput {
   margin: auto;
 }
-
+.cardFonts {
+  font-family: "Raleway", sans-serif!important;
+}
 .headerText {
   margin-bottom: 50px;
 }
