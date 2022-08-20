@@ -102,3 +102,10 @@ label {
   outline: none!important;
   box-shadow: none!important;
 }
+
+#recentSearches {
+text-align: relative;
+margin: 25px 0px 0px 360px;
+font-family: 'Raleway', sans-serif , bold;
+}
+  

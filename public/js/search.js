@@ -1,7 +1,10 @@
+
+
 const searchBtn = document.getElementById('search-addon')
 let inputEl = document.getElementById('searchProperty')
 
 let logoutBtn = document.getElementsByClassName('text-dark')
+let recentSearches = document.getElementById('recentSearches')
 
 
 
@@ -13,6 +16,7 @@ let logoutBtn = document.getElementsByClassName('text-dark')
 //   }
 
 // })
+
 
 
 searchBtn.addEventListener('click', (e) => {
@@ -32,7 +36,7 @@ const url = `https://real-estate-top-5.herokuapp.com/api/search/${inputCity}_${i
     .then((response) => {
       showData(response)
 
-      console.log(response)
+      console.log(response.body)
     })
     .catch((err) => console.error(err))
   })
@@ -40,7 +44,28 @@ const url = `https://real-estate-top-5.herokuapp.com/api/search/${inputCity}_${i
 async function showData(data) {
   data = data.body
   let html = ''
-//put LocalStorage code here.
+
+
+  //put LocalStorage code here.
+
+  
+ // Load list from local storage
+ let list = JSON.parse(localStorage.getItem("recentRealEstateResponses"));
+ console.log(list)
+  //create object to save to local storage
+    let searchObject = {
+      'searchValue' : inputEl.value.split(','),
+      'response' : data
+
+    }
+    console.log(searchObject)
+
+ 
+ //save list to local storage
+ localStorage.setItem("recentRealEstateResponses" , JSON.stringify(searchObject));
+
+    
+ 
 
   for (let i = 0; i < 5; i++) {
     let info = data[i]
@@ -62,6 +87,7 @@ if(info.has_pool == null) { info.has_pool = 'none'}
       Days on market:${info.days_on_market}
       </p> </div> </div> </div>`
   }
+
   document.getElementById('cards').innerHTML = html
 }
 
@@ -81,6 +107,12 @@ function checkIfImageExists(url, callback) {
     };
   }
 }
+//add item to recent searches section
+
+
+  //function printLastSearch (pastResponse) {
+    //return data;
+    
   
 
 
@@ -138,4 +170,4 @@ function checkIfImageExists(url, callback) {
 //   //   })
 //   // //new comment
 //   // console.log(input)
-// })
+// }}
