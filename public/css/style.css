@@ -104,3 +104,25 @@ label {
   background-color: rgb(75, 85, 192) !important;
   color: white !important;
 }
+.card:hover {
+  cursor: pointer;
+}
+.cards {
+  margin-top: 2%;
+}
+.propertydetail {
+  display: none;
+}
+.pcard {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.pcard-btn {
+  float: right;
+  margin-right: 15%;
+  background-color: rgb(75, 85, 192) !important;
+  color: white !important;
+}
+.pcard-btn:hover {
+  background-color: rgb(40, 48, 130) !important;
+}
