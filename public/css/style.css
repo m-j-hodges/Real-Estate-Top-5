@@ -1,6 +1,5 @@
-#logo{
+#logo {
   padding-bottom: 10px;
-
 }
 #homeImg {
   margin-top: 65px;
@@ -8,52 +7,47 @@
   height: auto;
 }
 
-
 .topBtn:hover {
-  background-color: rgb(40, 48, 130)!important;
+  background-color: rgb(40, 48, 130) !important;
 }
 #login:hover {
-  background-color: rgb(40, 48, 130)!important;
+  background-color: rgb(40, 48, 130) !important;
 }
 #send-data:hover {
-  background-color: rgb(40, 48, 130)!important;
+  background-color: rgb(40, 48, 130) !important;
 }
 .topBtn {
   margin: 25px 30px 0px 0px;
-  background-color: rgb(75, 85, 192)!important;
-  color: white!important;
+  background-color: rgb(75, 85, 192) !important;
+  color: white !important;
 }
-
-
 
 .headerDiv img {
   float: left;
   width: 100px;
   height: 100px;
   margin-left: 60px;
-
 }
 .headerText h1 {
   position: relative;
   top: 18px;
   left: 30px;
-  font-family: 'Archivo Black', sans-serif;
+  font-family: "Archivo Black", sans-serif;
 }
 
 h2 {
   margin: 25px 0px 0px 360px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 h4 {
   margin: 35px 0pc 20px 0px;
 }
 .login {
-  background-color: rgb(231, 242, 255)!important;
+  background-color: rgb(231, 242, 255) !important;
   padding-top: 10px;
   margin-top: 60px;
   justify-content: center;
-  
 }
 #recent {
   font-size: 30px;
@@ -63,9 +57,12 @@ ul {
   padding: 0px;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-  background-color: rgb(75, 85, 192)!important;
-  color: white!important;
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: rgb(75, 85, 192) !important;
+  color: white !important;
 }
 label {
   font-weight: bold;
@@ -76,11 +73,10 @@ label {
   padding-bottom: 50px;
 }
 
-#newAccount { 
+#newAccount {
   width: 600px;
- margin: auto;
- padding-left: 40px;
-
+  margin: auto;
+  padding-left: 40px;
 }
 
 .newUser {
@@ -102,10 +98,3 @@ label {
   outline: none!important;
   box-shadow: none!important;
 }
-
-#recentSearches {
-text-align: relative;
-margin: 25px 0px 0px 360px;
-font-family: 'Raleway', sans-serif , bold;
-}
-  
